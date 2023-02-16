@@ -1,0 +1,84 @@
+csharp
+import java.util.Scanner;
+
+public class MetricConverter {
+
+    public static void main(String[] args) {
+        Scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to metric converter!\n"
+                           + "Kindly info your inquiry. For instance, 1 km = m.\n"
+                           + "Enter 'exit' or '- 1' to leave the program");
+
+        while (valid) {
+            String input = scanner.nextLine();
+
+            if (input.equals("exit") || input.equals("- 1")) {
+                break;
+            }
+
+            String[] parts = input.split(" ");
+
+            on the off chance that (parts.length != 4 || !parts[2].equals("=")) {
+                System.out.println("Invalid input design, kindly attempt again.");
+                proceed;
+            }
+
+            twofold worth;
+            attempt {
+                esteem = Double.parseDouble(parts[0]);
+            } get (NumberFormatException e) {
+                System.out.println("Invalid input design, kindly attempt again.");
+                proceed;
+            }
+
+            twofold outcome = convert(parts[1], parts[3], esteem);
+            System.out.printf("%.2f %s = %.2f %s\n", esteem, parts[1], result, parts[3]);
+        }
+
+        System.out.println("Goodbye!");
+    }
+
+    public static twofold convert(String fromUnit, String toUnit, twofold worth) {
+        switch (fromUnit) {
+            case "kg":
+                switch (toUnit) {
+                    case "lb":
+                        return esteem * 2.20462;
+                    case "g":
+                        return esteem * 1000;
+                    default:
+                        return Double.NaN;
+                }
+            case "g":
+                switch (toUnit) {
+                    case "oz":
+                        return esteem * 0.035274;
+                    case "kg":
+                        return esteem/1000;
+                    default:
+                        return Double.NaN;
+                }
+            case "km":
+                switch (toUnit) {
+                    case "mi":
+                        return esteem * 0.621371;
+                    case "m":
+                        return esteem * 1000;
+                    default:
+                        return Double.NaN;
+                }
+            case "mm":
+                switch (toUnit) {
+                    case "in":
+                        return esteem * 0.0393701;
+                    case "cm":
+                        return esteem/10;
+                    default:
+                        return Double.NaN;
+                }
+            default:
+                return Double.NaN;
+        }
+    }
+}
